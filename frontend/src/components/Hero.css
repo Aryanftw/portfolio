@@ -1,34 +1,156 @@
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
+/* Hero.css */
+.hero-name-gradient {
+  background: linear-gradient(135deg, #FF6BFF 0%, #AC4CFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-name-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #FF6BFF 0%, #AC4CFF 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.hero-name-gradient:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animated particles background */
+.particles-container {
+  background: linear-gradient(135deg, #FF6BFF 0%, #AC4CFF 100%);
+  opacity: 0.1;
+}
+
+/* Modern CTA buttons */
+.hero-cta {
+  padding: 1.5rem 2.5rem;
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-cta:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(172, 76, 255, 0.3);
+}
+
+/* Animated arrow */
+.cta-arrow {
+  position: relative;
+  width: 24px;
+  height: 2px;
+}
+
+.arrow-line {
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.arrow-head {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: white;
+}
+
+.hero-cta:hover .arrow-line {
+  transform: translateX(5px);
+}
+
+/* Tech bubbles */
+.tech-bubble-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tech-bubble {
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.tech-bubble:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(172, 76, 255, 0.2);
+}
+
+/* Grid lines animation */
+.grid-lines {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+}
+
+.grid-line {
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.hero-secondary-cta:hover .grid-line {
+  transform: scale(1.2);
+  background: #FF6BFF;
+}
+
+@media (max-width: 768px) {
+  .hero-name-gradient {
+    font-size: 4rem;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .tech-bubble-group {
+    gap: 0.5rem;
   }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 1s ease-out;
-}
-
-button{
-  border: 2px solid black;
-}
-
-button:hover{
-  background-color: rgb(12, 12, 89);
-  border:none;
-}
-
-
-@media (max-width:1400px){
-  #hero{
-    margin-bottom: 80px;
-    width:auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  
+  .tech-bubble {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }

@@ -1,62 +1,27 @@
+/* Projects.css */
 .project-card {
-  border: 2px solid black;
-  background-image: linear-gradient(45deg, rgb(91, 89, 89), black);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-  transition: all 0.3s ease-in-out;
-  color: white;
-  border-radius: 1rem;
-  padding: 1rem;
-  width: 280px;  /* Slightly reduced width */
-  margin: 1rem;  /* Margin for spacing when stacked in a column */
+  transition: all 0.5s ease-out;
 }
 
-.project-card:hover {
-  background-image: none;
-  transform: scale(1.04);
-  color: black;
+.project-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Main container styling */
+/* Staggered animation for cards */
+.project-card:nth-child(1) { transition-delay: 0.1s; }
+.project-card:nth-child(2) { transition-delay: 0.2s; }
+.project-card:nth-child(3) { transition-delay: 0.3s; }
+.project-card:nth-child(4) { transition-delay: 0.4s; }
+
+/* Gradient background animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 #projects {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  gap: 2rem;
-}
-
-/* Row styling */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;  /* Center cards horizontally */
-  gap: 2rem;
-  width: 100%;
-  max-width: 1000px;  /* Adjusted max-width for better centering */
-}
-
-/* Responsive Media Queries */
-
-/* Single-column layout for smaller screens */
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column; /* Stacks all project cards in a single column */
-    align-items: center;
-  }
-  .project-card {
-    width: 90%;         /* Reduced width for smaller screens */
-    max-width: 360px;   /* Limits width to prevent excessive stretching */
-  }
-}
-
-@media (max-width: 437px) {
-  .row {
-    flex-direction: column; /* Stacks all project cards in a single column */
-    align-items: center;
-  }
-  .project-card {
-    width: 80%;         /* Reduced width for smaller screens */
-    max-width: 330px;
-    margin-right: 20%;   /* Limits width to prevent excessive stretching */
-  }
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
 }
